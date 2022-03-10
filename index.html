@@ -5,10 +5,17 @@
 	</head>
 	<body style="background-color:#33475b ">
 		<h1>two number 9s, a number 9 large, a number 6 with extra dip, a number 7, two number 45s, one with cheese, and a large soda.</h1>
-		<img style="position:relative; left:1200px; top:460px;" src="https://static.wikia.nocookie.net/among-us-wiki/images/d/db/Vent.png" draggable="false" onclick="sus.play();"> </img>
+		<img  style="position: absolute; right: 0px; bottom: 0px;" src="https://static.wikia.nocookie.net/among-us-wiki/images/d/db/Vent.png" draggable="false" onclick="sus.play(); pageRedirect();">
+			<script type="text/javascript">
+		function pageRedirect(){
+ var delay = 600; // time in milliseconds
+ setTimeout(function(){
+  window.location = "sus.html";
+ },delay);
+} </script>
 		<script type="text/javascript">
 			var sus = new Audio('audio/sus.mp3');
-			sus.play();
+			sus.play();	
 		</script>
 	</body>
 </html>
