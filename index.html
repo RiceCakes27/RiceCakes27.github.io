@@ -5,7 +5,7 @@
 	<title>can i get uhhhhhh</title>
 	<link rel="icon" href="hamburg.ico">
 </head>
-<body style="background-color:#33475b">
+<body style="background-color:#33475b" onkeypress="beep();">
 	<h1>two number 9s, a number 9 large, a number 6 with extra dip, a number 7, two number 45s, one with cheese, and a large soda.</h1>
 	<img style="position: absolute; right: 0px; bottom: 0px;" src="https://static.wikia.nocookie.net/among-us-wiki/images/d/db/Vent.png" draggable="false" onclick="sus.play(); pageRedirect();">
 	<img style=" width: 640px; height: 360px" src="cj.jpg" />
@@ -19,10 +19,61 @@
 		}</script>
 	<script type="text/javascript">
 		var sus = new Audio('audio/sus.mp3');
-	</script>
+		</script>
+	<script type="text/javascript">		
+	 var twit = ['s', 'u', 's', 's', 'y', ' ', 'b', 'a', 'l', 'l', 's'];
+	 var current = 0;
+	 var keyHandler = function (event) {
+  
+	  // If the key isn't in the pattern, or isn't the current key in the pattern, reset
+	 if (twit.indexOf(event.key) < 0 || event.key !== twit[current]) {
+      current = 0;
+      return;
+	 }
+  
+	  // Update how much of the pattern is complete
+	  current++;
+  
+	   // If complete, alert and reset
+	  if (twit.length === current) {
+      current = 0;
+      document.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+	 };
+  
+	 };
+  
+	 // Listen for keydown events
+	  document.addEventListener('keydown', keyHandler, false);
+	 // Listen for middle mouse click
+	 window.addEventListener('mousedown', (event) => {
+	  if (event.button == 1 || event.buttons == 4) {
+      amongUs();
+	 }
+    	});
+	 </script>	
+	<script type="text/javascript">
+  
+	 var sus = new Audio('audio/sus.mp3');
+		sus.play();
+  
+	 function boom() {
+      var boom = new Audio('audio/boom.mp3');
+      boom.play();
+	 }
+  
+  
+	 function beep() {
+      var text = new Audio('audio/text.mp3');
+      text.play();
+	 }
+    
+	  function amongUs() {
+      var amongUsSound = new Audio('audio/amongus.mp3');
+      amongUsSound.play();
+	   }
+	 </script>
 	<div style="font-size: 48px">normal stuff</div> <ul>
-		<li> <a style="font-size: 30px" href="https://steamcommunity.com/profiles/76561198441805599/">Steam</a> </li>
-	</ul>
+		<li> <a style="font-size: 30px" href="https://steamcommunity.com/profiles/76561198441805599/">Steam</a> </li> </ul>
 	<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I wanna eat your boobies</p>&mdash; Nicholas Gurr (@_nick_gurr) <a href="https://twitter.com/_nick_gurr/status/1103410446525190144?ref_src=twsrc%5Etfw">March 6, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
