@@ -1,0 +1,51 @@
+/* apply to entire page */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* headings */
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+/* links */
+a {
+  font-family: 'Open Sans', sans-serif;
+  color: #0077cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* paragraphs and other text */
+p, ul, ol {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* Style for the image */
+.popup-image {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 5px solid rgba(0, 0, 0, 0);
+}
+
+.popup-image:hover {
+  transform: scale(1.1);
+  z-index: 9999;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
