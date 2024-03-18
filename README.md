@@ -1,1 +1,1 @@
-uh so like its a shit website thats very good though
+uh so like it's a shit website that's very good though
