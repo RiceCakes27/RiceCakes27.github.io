@@ -3,16 +3,30 @@ hgroup, menu, nav, section {
   display: block; 
 }
 body {
-  background-color: #CCC;
+  background-color: #020f23; 
+  background-image: url(/background-bbf4af533456131bea3c.png);
 }
 h1 {
   text-align: center;
+  color: darkgray;
 }
 p {
   text-align: center;
+  color: darkgray;
 }
 canvas {
   display: block;
   margin: 0 auto;
   background-color: #666;
+}
+
+/* links */
+a {
+  font-family: 'Open Sans', sans-serif;
+  color: #0077cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

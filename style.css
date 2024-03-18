@@ -3,14 +3,18 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  background-color: #020f23;
+  background-image: url(https://e621.net/packs/static/background-bbf4af533456131bea3c.png);
+  /*hah i made your computer connect to a sussy website*/
 }
 
 /* headings */
 h1, h2, h3 {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
+  margin-top: 0;
+  margin-bottom: 0.1em;
+  color: lightgrey;
 }
 
 /* links */
@@ -27,30 +31,38 @@ a:hover {
 /* paragraphs and other text */
 p, ul, ol {
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
   margin-top: 0;
-  margin-bottom: 1em;
+  color: lightgray;
+}
+
+ul{
+  font-size: 2rem;
+  margin-bottom: 0;
 }
 
 /* Style for the image */
 .popup-image {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  border: 5px solid rgba(0, 0, 0, 0);
+  border: 5px solid transparent;
 }
 
 .popup-image:hover {
   transform: scale(1.1);
-  z-index: 9999;
 }
 
 p {
   margin: 0;
-  padding: 0;
 }
 
 img {
     max-width: 100%;
     height: auto;
+}
+
+div {
+  margin-top: -12px;
+  margin-bottom: -12px;
+  color: lightgray;
+  font-size: 48px;
 }
