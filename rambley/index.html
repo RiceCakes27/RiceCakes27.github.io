@@ -19,10 +19,13 @@
 </style>
 </head>
  
-<body >
+<body onloadstart="looker()">
 
 <script>
-    var video = document.querySelector("#videoElement");
+	function looker() {
+			var delay = 1000;
+			setTimeout(function () {
+				var video = document.querySelector("#videoElement");
 
 if (navigator.mediaDevices.getUserMedia) {
   navigator.mediaDevices.getUserMedia({ video: true })
@@ -32,7 +35,8 @@ if (navigator.mediaDevices.getUserMedia) {
     .catch(function (err0r) {
       console.log("Something went wrong!");
     });
-}
+			}, delay);
+			}
 </script>
 <video autoplay src="thelooker.mp4"></video>
 </body>
