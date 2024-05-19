@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Display Webcam Stream</title>
+<title>The Looker</title>
  
 <style>
 #container {
@@ -19,12 +19,8 @@
 </style>
 </head>
  
-<body>
-<div id="container">
-	<video autoplay="true" id="videoElement">
-	
-	</video>
-</div>
+<body >
+
 <script>
     var video = document.querySelector("#videoElement");
 
@@ -38,5 +34,6 @@ if (navigator.mediaDevices.getUserMedia) {
     });
 }
 </script>
+<video autoplay src="thelooker.mp4"></video>
 </body>
 </html>
