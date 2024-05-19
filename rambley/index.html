@@ -19,24 +19,27 @@
 </style>
 </head>
  
-<body onloadstart="looker()">
-
+<body onload="looker()">
 <script>
 	function looker() {
-			var delay = 1000;
-			setTimeout(function () {
-				var video = document.querySelector("#videoElement");
+		var delay = 1000;
+		setTimeout(function () {
+		camera();
+		}, delay);
+	}
+	function camera() {
+		var video = document.querySelector("#videoElement");
 
-if (navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function (stream) {
-      video.srcObject = stream;
-    })
-    .catch(function (err0r) {
-      console.log("Something went wrong!");
-    });
-			}, delay);
-			}
+		if (navigator.mediaDevices.getUserMedia) {
+		navigator.mediaDevices.getUserMedia({ video: true })
+			.then(function (stream) {
+			video.srcObject = stream;
+			})
+			.catch(function (err0r) {
+			console.log("Something went wrong!");
+			});
+	}
+}
 </script>
 <video autoplay src="thelooker.mp4"></video>
 </body>
