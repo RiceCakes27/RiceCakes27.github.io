@@ -9,6 +9,8 @@
 				width: 500px;
 				height: 375px;
 				position: absolute;
+				z-index: 1;
+				background-color: aqua;
 			}
 			#video {
 				height: 100vh;
@@ -26,9 +28,6 @@
 		</style>
 	</head>
 	<body onload="looker()">
-		<div id="balls">
-			<video autoplay="true" id="videoElement"></video>
-		</div>
 		<script>
 			function looker() {
 				var delay = 6500;
@@ -52,7 +51,7 @@
 				}, delay);
 			}
 			function hide() {
-				var x = document.getElementById("balls");
+				var x = document.getElementById("videoElement");
 				if (x.style.display === "none") {
 					x.style.display = "block";
 				} else {
@@ -62,6 +61,7 @@
 		}
 		</script>
 		<div id="container">
+			<video autoplay="true" id="videoElement"></video>
 			<video autoplay src="thelooker.mp4" id="video"></video>
 		</div>
 	</body>
