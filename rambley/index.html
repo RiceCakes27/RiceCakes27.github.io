@@ -9,7 +9,7 @@
 				width: 500px;
 				height: 375px;
 				position: absolute;
-				z-index: 1;
+				z-index: -1;
 			}
 			#video {
 				height: 100vh;
@@ -26,9 +26,20 @@
 			}
 		</style>
 	</head>
-	<body onload="looker()">
+	<body>
 		<script>
 			function looker() {
+				var elem = document.documentElement;
+				if (elem.requestFullscreen) {
+					elem.requestFullscreen();
+				} else if (elem.webkitRequestFullscreen) { /* Safari */
+					elem.webkitRequestFullscreen();
+				} else if (elem.msRequestFullscreen) { /* IE11 */
+					elem.msRequestFullscreen();
+				}
+				document.getElementById('videoElement').style.zIndex="1";
+				document.getElementById('video').style.cursor='default';
+				document.getElementById('video').play();
 				var delay = 6500;
 				setTimeout(function () {
 				camera();
@@ -46,22 +57,14 @@
 				});
 				var delay2 = 4000;
 				setTimeout(function () {
-					hide()
+					document.getElementById('videoElement').style.display='none';
 				}, delay2);
 			}
-			function hide() {
-				var x = document.getElementById("videoElement");
-				if (x.style.display === "none") {
-					x.style.display = "block";
-				} else {
-					x.style.display = "none";
-				}
-			} 
 		}
 		</script>
 		<div id="container">
 			<video autoplay="true" id="videoElement"></video>
-			<video autoplay src="thelooker.mp4" id="video"></video>
+			<video src="thelooker.mp4" style="cursor: pointer;" onclick="looker()" id="video"></video>
 		</div>
 	</body>
 </html>
