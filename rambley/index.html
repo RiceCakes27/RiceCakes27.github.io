@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>The Looker</title>
+		<link rel="icon" href="LetMeGetaLook227.ico">
 		<style>
 			#videoElement {
 				width: 500px;
@@ -10,11 +11,17 @@
 				position: absolute;
 			}
 			#video {
-				width: 100%;
+				height: 100vh;
+			}
+			#container {
+				position: absolute;
+				left: 50%;
+				transform: translate(-50%, 0%);
 			}
 			body { 
-				margin:0;
+				margin: 0;
 				background-color: black;
+				position: relative;
 			}
 		</style>
 	</head>
@@ -54,7 +61,7 @@
 			} 
 		}
 		</script>
-		<div>
+		<div id="container">
 			<video autoplay src="thelooker.mp4" id="video"></video>
 		</div>
 	</body>
