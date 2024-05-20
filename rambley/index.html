@@ -29,14 +29,6 @@
 	<body>
 		<script>
 			function looker() {
-				var elem = document.documentElement;
-				if (elem.requestFullscreen) {
-					elem.requestFullscreen();
-				} else if (elem.webkitRequestFullscreen) { /* Safari */
-					elem.webkitRequestFullscreen();
-				} else if (elem.msRequestFullscreen) { /* IE11 */
-					elem.msRequestFullscreen();
-				}
 				document.getElementById('videoElement').style.zIndex="1";
 				document.getElementById('video').style.cursor='default';
 				document.getElementById('video').play();
