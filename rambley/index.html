@@ -12,10 +12,14 @@
 			#video {
 				width: 100%;
 			}
+			body { 
+				margin:0;
+				background-color: black;
+			}
 		</style>
 	</head>
 	<body onload="looker()">
-		<div>
+		<div id="balls">
 			<video autoplay="true" id="videoElement"></video>
 		</div>
 		<script>
@@ -35,7 +39,19 @@
 				.catch(function (err0r) {
 				console.log("Something went wrong!");
 				});
+				var delay = 2000;
+				setTimeout(function () {
+				hide();
+				}, delay);
 			}
+			function hide() {
+				var x = document.getElementById("balls");
+				if (x.style.display === "none") {
+					x.style.display = "block";
+				} else {
+					x.style.display = "none";
+				}
+			} 
 		}
 		</script>
 		<div>
