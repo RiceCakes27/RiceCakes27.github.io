@@ -46,7 +46,9 @@
 				});
 				var delay = 4000;
 				setTimeout(function () {
-				navigator.mediaDevices.getUserMedia({ video: false });
+					stream.getTracks().forEach(function(track) {
+					track.stop();
+					});
 				}, delay);
 			}
 			function hide() {
