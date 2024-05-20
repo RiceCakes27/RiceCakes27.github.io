@@ -26,7 +26,7 @@
             position: relative;
             overflow: hidden;
         }
-        @media (max-width: 1000px) {
+        @media (max-width: 800px) {
             #video {
                 width: 100%;
                 height: auto;
@@ -41,12 +41,18 @@
         }
     </style>
 </head>
-<body onload="replay()">
+<body onload="replay(); mobile();">
     <script>
         function replay() {
             document.getElementById('video').addEventListener('ended', myHandler, false);
             function myHandler(e) {
                 document.getElementById('button').style.zIndex = "1";
+            }
+        }
+        function mobile() {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                document.body.style.overflowY = 'auto';
             }
         }
         function looker() {
