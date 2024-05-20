@@ -44,12 +44,10 @@
 				.catch(function (err0r) {
 				console.log("Something went wrong!");
 				});
-				var delay = 4000;
+				var delay2 = 4000;
 				setTimeout(function () {
-					stream.getTracks().forEach(function(track) {
-					track.stop();
-					});
-				}, delay);
+					hide()
+				}, delay2);
 			}
 			function hide() {
 				var x = document.getElementById("videoElement");
