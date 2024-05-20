@@ -9,7 +9,7 @@
 				width: 500px;
 				height: 375px;
 				position: absolute;
-				z-index: -1;
+				z-index: 1;
 			}
 			#video {
 				height: 100vh;
@@ -23,17 +23,24 @@
 				margin: 0;
 				background-color: black;
 				position: relative;
+				overflow: hidden;
 			}
 		</style>
 	</head>
-	<body>
+	<body onload="replay()">
 		<script>
+			function replay() {
+				document.getElementById('video').addEventListener('ended',myHandler,false);
+				function myHandler(e) {
+					document.getElementById('button').style.zIndex="1";
+				}
+			}
 			function looker() {
-				document.getElementById('videoElement').style.zIndex="1";
-				document.getElementById('video').style.cursor='default';
+				document.getElementById('button').style.zIndex="-1";
 				document.getElementById('video').play();
 				var delay = 6500;
 				setTimeout(function () {
+				document.getElementById('videoElement').style.display="block";
 				camera();
 				}, delay);
 			}
@@ -49,14 +56,20 @@
 				});
 				var delay2 = 4000;
 				setTimeout(function () {
-					document.getElementById('videoElement').style.display='none';
+					var x = document.getElementById("videoElement");
+				if (x.style.display === "none") {
+					x.style.display = "block";
+				} else {
+					x.style.display = "none";
+				}
 				}, delay2);
 			}
 		}
 		</script>
 		<div id="container">
 			<video autoplay="true" id="videoElement"></video>
-			<video src="thelooker.mp4" style="cursor: pointer;" onclick="looker()" id="video"></video>
+			<img src="play.png" style="position: absolute; height: 148px; left: 50%; top: 50%; transform: translate(-50%, -50%); cursor: pointer; z-index: 1;" onclick="looker()" id="button">
+			<video src="test.mp4"id="video"></video>
 		</div>
 	</body>
 </html>
