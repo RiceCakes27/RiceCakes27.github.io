@@ -3,6 +3,11 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;    /* Center vertically */
+  flex-direction: column; /* Arrange children in a column */
   background-color: #020f23;
   background-image: url(https://e621.net/packs/static/background-bbf4af533456131bea3c.png);
   /*if you had a sneaking suspicion about the background you were right*/
@@ -15,6 +20,7 @@ h1, h2, h3 {
   margin-top: 0;
   margin-bottom: 0.1em;
   color: lightgrey;
+  text-align: center;
 }
 
 /* links */
@@ -48,11 +54,7 @@ ul{
 }
 
 .popup-image:hover {
-  transform: scale(1.1);
-}
-
-p {
-  margin: 0;
+  transform: scale(1.2);
 }
 
 img {
