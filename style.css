@@ -50,7 +50,7 @@ ul{
 .popup-image {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  border: 5px solid transparent;
+  border: 10px solid transparent;
 }
 
 .popup-image:hover {
@@ -67,4 +67,8 @@ div {
   margin-bottom: -12px;
   color: lightgray;
   font-size: 48px;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: baseline;    /* Center vertically */
+  flex-direction: row; /* Arrange children in a column */
 }
