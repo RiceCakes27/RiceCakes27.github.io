@@ -26,6 +26,14 @@
             position: relative;
             overflow: hidden;
         }
+        #out {
+            color: grey;
+            text-shadow:
+            -2px -2px 0 #000,
+            2px -2px 0 #000,
+            -2px 2px 0 #000,
+            2px 2px 0 #000;  
+        }
         @media (max-width: 800px) {
             #video {
                 width: 100%;
@@ -56,6 +64,7 @@
             }
         }
         function looker() {
+            document.getElementById("out").style.visibility = "hidden";
             document.getElementById('button').style.zIndex = "-1";
             document.getElementById('video').play();
             var delay = 6500;
@@ -85,15 +94,16 @@
                     }
                 }, delay2);
             }
+        }
         function stopcam() {
             const video = document.querySelector('#videoElement');
             const mediaStream = video.srcObject;
             const tracks = mediaStream.getTracks();
             tracks.forEach(track => track.stop())
-            }
         }
     </script>
     <div id="container">
+        <h1 style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -21vw); text-align: center; font-size: 3vw; font-family: sans-serif;" id="out">Pleae enable camera permissions in your browser before playing.</h1>
         <video autoplay="true" id="videoElement"></video>
         <img src="play.png" style="position: absolute; height: 30%; left: 50%; top: 50%; transform: translate(-50%, -50%); cursor: pointer; z-index: 1;" onclick="looker()" id="button">
         <video src="thelooker.mp4" id="video"></video>
