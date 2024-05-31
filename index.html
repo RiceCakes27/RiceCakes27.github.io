@@ -2,56 +2,53 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Cat Middle Finger</title>
+		<title>Rices Site</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" href="cat.ico"/>
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body onkeypress="beep();" >
 		<h1>Welcome to my website!</h1>
-		<img style="height: 30%;" src="cmf.png">
 		<a href="https://catmiddlefinger.github.io">The cat middle finger website</a>
 		<img style="position: absolute; right: 0px; bottom: -200px; margin: 5px;" src="vent.png" draggable="false" onclick="vent();" />
 		<p>↓ Links (click them) ↓</p>
 		<div>
-			<a href="https://discord.com/invite/gz7JSjhPRw">
+			<a href="/portfolio/" title="List of stuff i've made">
+				<img class="popup-image" src="me.png" alt="Clickable Image" width="100">
+			</a>
+			<a href="https://discord.com/invite/gz7JSjhPRw" title="Discord server i'm in">
 				<img class="popup-image" src="discord.png" alt="Clickable Image" width="100">
 			</a>
-			<a href="/rambley/">
-				<img class="popup-image" src="R_Happy00.png" alt="Clickable Image" width="100">
-			</a>
-			<a href="https://steamcommunity.com/profiles/76561198441805599/">
+			<a href="https://steamcommunity.com/profiles/76561198441805599/" title="My steam account">
 				<img class="popup-image" src="steam.png" alt="Clickable Image" width="100">
 			</a>
-			<a href="/snake/">
+			<a href="/snake/" title="Snake">
 				<img class="popup-image" src="sheouroonmyboros.png" alt="Clickable Image" width="100">
 			</a>
 		</div>
-		<h2>I have a BeamMP server!</h3>
-		<p style="font-size: larger;">Get whitelisted join the discord!</p>
 		<script type="text/javascript">
 			function vent() {
 				var delay = 1000;
 				venting.play()
 				setTimeout(function () {
 					addSUSSY();
-			}, delay);
+				}, delay);
 			}
 			var funypattern = ['s', 'u', 's', 's', 'y', ' ', 'b', 'a', 'l', 'l', 's'];
 			var current = 0;
 			var keyHandler = function (event) {
-			// If the key isn't in the pattern, or isn't the current key in the pattern, reset
-			if (funypattern.indexOf(event.key) < 0 || event.key !== funypattern[current]) {
-				current = 0;
-				return;
-			}
-			// Update how much of the pattern is complete
-			current++;
-			// If complete, alert and reset
-			if (funypattern.length === current) {
-				current = 0;
-				document.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-			};
+				// If the key isn't in the pattern, or isn't the current key in the pattern, reset
+				if (funypattern.indexOf(event.key) < 0 || event.key !== funypattern[current]) {
+					current = 0;
+					return;
+				}
+				// Update how much of the pattern is complete
+				current++;
+				// If complete, alert and reset
+				if (funypattern.length === current) {
+					current = 0;
+					document.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+				};
 			};
 			// Listen for keydown events
 			document.addEventListener('keydown', keyHandler, false);
@@ -66,42 +63,42 @@
 			}
 			function addSUSSY() {
 				var dynamicHTML = `
-				<!DOCTYPE html>
-				<html lang="en">
-				<head>
-					<style>
-						body {
-							background-image: url("b69.png"), url("space.jpg");
-							background-size: 169px, contain;
-							background-repeat: repeat;
-						}
-						/* default style */
-						p {
-							font-size: 200px;
-						}
-						/* media query for mobile devices */
-						@media only screen and (max-width: 600px) {
-							p {
-								font-size: 5em;
-								max-width: 100%;
-								height: auto;
+					<!DOCTYPE html>
+					<html lang="en">
+					<head>
+						<style>
+							body {
+								background-image: url("b69.png"), url("space.jpg");
+								background-size: 169px, contain;
+								background-repeat: repeat;
 							}
-						}
-					</style>
-				</head>
-				<body>
-					<p style="font-family: sans-serif; color: darkred; text-align:center">SUSSY!</p>
-					<audio autoplay="" loop="" src="sussong.mp3"></audio>
-				</body>
-				</html>
-			`;
-			// Clear existing content
-			document.body.innerHTML = '';
-			// Create a new div to hold the dynamic HTML
-			var dynamicContainer = document.createElement("div");
-			dynamicContainer.innerHTML = dynamicHTML;
-			// Append the dynamic HTML to the document body
-			document.body.appendChild(dynamicContainer);
+							/* default style */
+							p {
+								font-size: 200px;
+							}
+							/* media query for mobile devices */
+							@media only screen and (max-width: 600px) {
+								p {
+									font-size: 5em;
+									max-width: 100%;
+									height: auto;
+								}
+							}
+						</style>
+					</head>
+					<body>
+						<p style="font-family: sans-serif; color: darkred; text-align:center">SUSSY!</p>
+						<audio autoplay="" loop="" src="sussong.mp3"></audio>
+					</body>
+					</html>
+				`;
+				// Clear existing content
+				document.body.innerHTML = '';
+				// Create a new div to hold the dynamic HTML
+				var dynamicContainer = document.createElement("div");
+				dynamicContainer.innerHTML = dynamicHTML;
+				// Append the dynamic HTML to the document body
+				document.body.appendChild(dynamicContainer);
 			}
 		</script>
 	</body>
