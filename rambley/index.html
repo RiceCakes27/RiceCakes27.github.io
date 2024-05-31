@@ -6,46 +6,65 @@
     <link rel="icon" href="LetMeGetaLook227.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        #videoElement {
-            width: 40%;
-			height: 50%;
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            position: relative;
+        }
+        #cam {
+            width: 40vw;
+            height: 30vw;
             position: absolute;
+            object-fit: contain;
             z-index: 1;
+            background-color: antiquewhite;
+            transform: translate(-30vw, -13vw);
         }
         #video {
-            height: 100vh;
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
         }
         #container {
+            height: 100%;
+            width: 100%;
             position: absolute;
             left: 50%;
             transform: translate(-50%, 0%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        body {
-            margin: 0;
-            background-color: black;
-            position: relative;
-            overflow: hidden;
+        img {
+            position: absolute;
+            height: 20vw;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 1;
         }
-        #out {
+        h1 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -21vw);
+            text-align: center;
+            font-size: 3vw;
+            font-family: sans-serif;
             color: grey;
             text-shadow:
             -2px -2px 0 #000,
             2px -2px 0 #000,
             -2px 2px 0 #000,
             2px 2px 0 #000;  
-        }
-        @media (max-width: 800px) {
-            #video {
-                width: 100%;
-                height: auto;
-            }
-            #container {
-                width: 100%;
-                max-width: 100%;
-            }
-            body {
-                overflow-y: visible;
-            }
         }
     </style>
 </head>
@@ -54,7 +73,7 @@
         function replay() {
             document.getElementById('video').addEventListener('ended', myHandler, false);
             function myHandler(e) {
-                document.getElementById('button').style.zIndex = "1";
+                document.querySelector('img').style.visibility = "visible";
             }
         }
         function mobile() {
@@ -64,48 +83,44 @@
             }
         }
         function looker() {
-            document.getElementById("out").style.visibility = "hidden";
-            document.getElementById('button').style.zIndex = "-1";
+            document.querySelector('h1').style.visibility = "hidden";
+            document.querySelector('img').style.visibility = "hidden";
             document.getElementById('video').play();
-            var delay = 6500;
             setTimeout(function () {
-                document.getElementById('videoElement').style.display = "block";
+                document.getElementById('cam').style.display = "block";
                 camera();
-            }, delay);
+            }, 6500);
         }
         function camera() {
-            var video = document.querySelector("#videoElement");
             if (navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ video: true })
                     .then(function (stream) {
-                        video.srcObject = stream;
+                        document.getElementById('cam').srcObject = stream;
                     })
                     .catch(function (err0r) {
                         console.log("Something went wrong!");
                     });
-                var delay2 = 4000;
                 setTimeout(function () {
                     stopcam()
-                    var x = document.getElementById("videoElement");
+                    var x = document.getElementById("cam");
                     if (x.style.display === "none") {
                         x.style.display = "block";
                     } else {
                         x.style.display = "none";
                     }
-                }, delay2);
+                }, 4000);
             }
         }
         function stopcam() {
-            const video = document.querySelector('#videoElement');
-            const mediaStream = video.srcObject;
+            const mediaStream = document.getElementById('cam').srcObject;
             const tracks = mediaStream.getTracks();
             tracks.forEach(track => track.stop())
         }
     </script>
     <div id="container">
-        <h1 style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -21vw); text-align: center; font-size: 3vw; font-family: sans-serif;" id="out">Pleae enable camera permissions in your browser before playing.</h1>
-        <video autoplay="true" id="videoElement"></video>
-        <img src="play.png" style="position: absolute; height: 30%; left: 50%; top: 50%; transform: translate(-50%, -50%); cursor: pointer; z-index: 1;" onclick="looker()" id="button">
+        <h1>Pleae enable camera permissions in your browser before playing.</h1>
+        <video autoplay="true" id="cam"></video>
+        <img src="play.png" onclick="looker()">
         <video src="thelooker.mp4" id="video"></video>
     </div>
 </body>
