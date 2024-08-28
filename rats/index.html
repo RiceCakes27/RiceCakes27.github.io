@@ -15,25 +15,25 @@
 
         #scrolling-container {
             position: absolute;
-            top: 50%;  /* Start completely off-screen */
+            top: -100%;  /* Start completely off-screen */
             left: 50%;
             transform: translateX(-50%);
             width: 100%;  /* Adjust the width as needed */
             overflow: hidden;
             white-space: nowrap;
-            animation: scroll 10s linear infinite;
+            animation: scroll 4s linear infinite;
             z-index: 1; /* Lower z-index to place behind the model */
         }
 
         #scrolling-text {
-            font-size: 24px;
+            font-size: 60px;
             white-space: normal; /* Allow line breaks */
             text-align: center;  /* Center the text */
         }
 
         @keyframes scroll {
             0% {
-                top: -100%;
+                top: -20%;
             }
             100% {
                 top: 100%;
@@ -64,42 +64,14 @@
             Rats make me crazy.
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // Set up scene, camera, and renderer with transparent background
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setClearColor(0x000000, 0);  // Transparent background
-        document.getElementById('model-container').appendChild(renderer.domElement);
-
-        // Add a basic 3D model (cube)
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-
-        camera.position.z = 5;
-
-        // Animation loop to spin the model
-        function animate() {
-            requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            renderer.render(scene, camera);
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@v0.163.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@v0.163.0/examples/jsm/"
+            }
         }
-
-        animate();
-
-        // Adjust camera and renderer on window resize
-        window.addEventListener('resize', () => {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            renderer.setSize(width, height);
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-        });
     </script>
+    <script type="module" src="./main.js"></script>
 </body>
 </html>
