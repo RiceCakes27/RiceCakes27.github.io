@@ -1,3 +1,4 @@
+<!-- hello this code prolly sucks ass wouldnt know chatgpt wrote most of it-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,8 @@
     <title>Crazy?</title>
     <style>
         body {
+            background-image: url(rubberoom.jpg);
+            background-size: cover;
             margin: 0;
             overflow: hidden;
             background-color: #000;
@@ -15,29 +18,29 @@
 
         #scrolling-container {
             position: absolute;
-            top: -100%;  /* Start completely off-screen */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;  /* Adjust the width as needed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
-            white-space: nowrap;
-            animation: scroll 4s linear infinite;
             z-index: 1; /* Lower z-index to place behind the model */
         }
 
         #scrolling-text {
-            font-size: 60px;
-            white-space: normal; /* Allow line breaks */
-            text-align: center;  /* Center the text */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        @keyframes scroll {
-            0% {
-                top: -20%;
-            }
-            100% {
-                top: 100%;
-            }
+        .line {
+            font-size: 7vw;
+            text-align: center;
+            line-height: 1.2em; /* Adjust line height as needed */
         }
 
         #model-container {
@@ -47,23 +50,14 @@
             transform: translate(-50%, -50%);
             z-index: 2; /* Higher z-index to place in front of the text */
         }
-
-        canvas {
-            display: block;
-        }
     </style>
 </head>
 <body>
     <div id="model-container"></div>
-        <div id="scrolling-container">
-        <div id="scrolling-text">
-            Crazy? I was crazy once.<br>
-            They put me in a rooom<br>
-            A rubber room.<br>
-            A rubber room with rats.<br>
-            Rats make me crazy.
-        </div>
+    <div id="scrolling-container">
+        <div id="scrolling-text"></div>
     </div>
+
     <script type="importmap">
         {
             "imports": {
@@ -71,6 +65,70 @@
                 "three/addons/": "https://unpkg.com/three@v0.163.0/examples/jsm/"
             }
         }
+    </script>
+    <script type="module">
+        // JavaScript to handle dynamic text scrolling
+        const textLines = [
+            'Crazy? I was crazy once.',
+            'They put me in a room.',
+            'A rubber room.',
+            'A rubber room with rats.',
+            'Rats make me crazy.',
+            'Crazy? I was crazy once.',
+            'They put me in a room.',
+            'A rubber room.',
+            'A rubber room with rats.',
+            'Rats make me crazy.'
+        ];
+
+        const container = document.getElementById('scrolling-text');
+        const lineHeight = 60; // Adjust this to match your font size
+        const scrollSpeed = 2; // Adjust this to control scroll speed
+
+        // Add lines to the container
+        textLines.forEach(line => {
+            const div = document.createElement('div');
+            div.className = 'line';
+            div.innerHTML = line;
+            container.appendChild(div);
+        });
+
+        // Duplicate the text lines to ensure seamless looping
+        textLines.forEach(line => {
+            const div = document.createElement('div');
+            div.className = 'line';
+            div.innerHTML = line;
+            container.appendChild(div);
+        });
+
+        // Set the height of the scrolling text container
+        function initialize() {
+            const containerHeight = lineHeight * textLines.length * 2; // Height for both sets of lines
+            container.style.height = `${containerHeight}px`;
+
+            // Start the scrolling animation
+            startScrolling();
+        }
+
+        // Scroll the text lines manually
+        function startScrolling() {
+            let scrollTop = 0;
+            const containerHeight = container.scrollHeight;
+
+            function scroll() {
+                scrollTop += scrollSpeed; // Adjust the speed as needed
+                if (scrollTop >= containerHeight / 2) {
+                    scrollTop = 0; // Reset scroll position for seamless looping
+                }
+                container.style.transform = `translateY(-${scrollTop}px)`;
+                requestAnimationFrame(scroll);
+            }
+
+            scroll();
+        }
+
+        window.addEventListener('load', initialize);
+        window.addEventListener('resize', initialize); // Recalculate on resize
     </script>
     <script type="module" src="./main.js"></script>
 </body>

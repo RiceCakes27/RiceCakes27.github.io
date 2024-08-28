@@ -8,7 +8,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0x000000, 0);  // Transparent background
 document.getElementById('model-container').appendChild(renderer.domElement);
 
-const spotLight = new THREE.SpotLight(0xffffff, 600, 50, 0.2, 0.5);
+const spotLight = new THREE.SpotLight(0xffffff, 1000, 50, 0.2, 0.5);
 spotLight.position.set(0, 25, 0);
 scene.add(spotLight);
 
@@ -28,7 +28,7 @@ camera.position.z = 5;
 // Animation loop to spin the model
 function animate() {
     requestAnimationFrame(animate);
-    mesh.rotation.y += 0.01;
+    mesh.rotation.y += 0.025;
     renderer.render(scene, camera);
 }
 
