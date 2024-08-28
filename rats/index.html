@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Text with Spinning 3D Model</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        #scrolling-container {
+            position: absolute;
+            top: -100%;  /* Start completely off-screen */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;  /* Adjust the width as needed */
+            overflow: hidden;
+            white-space: nowrap;
+            animation: scroll 10s linear infinite;
+            z-index: 1; /* Lower z-index to place behind the model */
+        }
+
+        #scrolling-text {
+            font-size: 24px;
+            white-space: normal; /* Allow line breaks */
+            text-align: center;  /* Center the text */
+        }
+
+        @keyframes scroll {
+            0% {
+                top: -100%;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+
+        #model-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2; /* Higher z-index to place in front of the text */
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="model-container"></div>
+        <div id="scrolling-container">
+        <div id="scrolling-text">
+            Crazy? I was crazy once.<br>
+            They put me in a rooom<br>
+            A rubber room.<br>
+            A rubber room with rats.<br>
+            Rats make me crazy.
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Set up scene, camera, and renderer with transparent background
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);  // Transparent background
+        document.getElementById('model-container').appendChild(renderer.domElement);
+
+        // Add a basic 3D model (cube)
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        camera.position.z = 5;
+
+        // Animation loop to spin the model
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Adjust camera and renderer on window resize
+        window.addEventListener('resize', () => {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</body>
+</html>

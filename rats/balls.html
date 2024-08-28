@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLTF Model Loader Example</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        #model-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="model-container"></div>
+    <script type="module">
+        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js';
+        import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.167.1/examples/jsm/loaders/GLTFLoader.js';
+
+        // Create the scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('model-container').appendChild(renderer.domElement);
+
+        // Set up the GLTF loader
+        const loader = new GLTFLoader();
+
+        // Create a Three.js Group in which the loaded GLTF model will be placed
+        const group = new THREE.Group();
+        scene.add(group);
+
+        // Load your GLTF file
+        loader.load('rat.glb', (gltf) => {
+            group.add(gltf.scene);
+            gltf.scene.scale.set(2, 2, 2); // Scale the model if needed
+            gltf.scene.position.set(0, 0, 0); // Position the model if needed
+            console.log('Model loaded successfully');
+        }, undefined, (error) => {
+            console.error('Error loading model:', error);
+        });
+
+        // Set camera position
+        camera.position.z = 5;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            group.rotation.y += 0.01; // Rotate the model
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</body>
+</html>
