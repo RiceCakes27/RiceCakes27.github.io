@@ -72,3 +72,12 @@ div {
   align-items: baseline;    /* Center vertically */
   flex-direction: row; /* Arrange children in a column */
 }
+
+.backButton {
+  background-image: url(image/Arrow-back-04.svg);
+  width: 40px;
+  height: 40px;
+  left: 40px;
+  top:40px;
+  position: absolute;
+}

@@ -14,20 +14,20 @@
 	<body onkeypress="beep();" >
 		<h1>Welcome to my website!</h1>
 		<a href="https://catmiddlefinger.github.io">The cat middle finger website</a>
-		<img style="position: absolute; right: 0px; bottom: -200px; margin: 5px;" src="vent.png" draggable="false" onclick="vent();" />
+		<img style="position: absolute; right: 0px; bottom: -200px; margin: 5px;" src="image/vent.png" draggable="false" onclick="vent();" />
 		<p>↓ Links (click them) ↓</p>
 		<div>
 			<a href="/portfolio/" title="List of stuff i've made">
-				<img class="popup-image" src="me.png" alt="Clickable Image" width="100">
+				<img class="popup-image" src="image/me.png" alt="Clickable Image" width="100">
 			</a>
 			<a href="https://steamcommunity.com/profiles/76561198441805599/" title="My steam account">
-				<img class="popup-image" src="steam.png" alt="Clickable Image" width="100">
+				<img class="popup-image" src="image/steam.png" alt="Clickable Image" width="100">
 			</a>
 			<a href="https://github.com/RiceCakes27" title="My github">
-				<img class="popup-image" src="github.png" alt="Clickable Image" width="100">
+				<img class="popup-image" src="image/github.png" alt="Clickable Image" width="100">
 			</a>
 			<a href="/snake/" title="Snake">
-				<img class="popup-image" src="sheouroonmyboros.png" alt="Clickable Image" width="100">
+				<img class="popup-image" src="image/sheouroonmyboros.png" alt="Clickable Image" width="100">
 			</a>
 
 		</div>
@@ -58,10 +58,10 @@
 			// Listen for keydown events
 			document.addEventListener('keydown', keyHandler, false);
 			function beep() {
-				var text = new Audio('boom.mp3');
+				var text = new Audio('audio/boom.mp3');
 				text.play();
 			}
-			var venting = new Audio('venting.mp3');
+			var venting = new Audio('audio/venting.mp3');
 			function amongUs() {
 				var amongUsSound = new Audio('audio/amongus.mp3');
 				amongUsSound.play();
@@ -73,7 +73,7 @@
 					<head>
 						<style>
 							body {
-								background-image: url("b69.png"), url("space.jpg");
+								background-image: url("image/b69.png"), url("image/space.jpg");
 								background-size: 169px, contain;
 								background-repeat: repeat;
 							}
@@ -93,7 +93,7 @@
 					</head>
 					<body>
 						<p style="font-family: sans-serif; color: darkred; text-align:center">SUSSY!</p>
-						<audio autoplay="" loop="" src="sussong.mp3"></audio>
+						<audio autoplay="" loop="" src="audio/sussong.mp3"></audio>
 					</body>
 					</html>
 				`;
